@@ -56,6 +56,14 @@ void insertion_sort(int *numbers, unsigned count) {
 
 	memcpy(numbers, new, count*sizeof(int));
 }
+ 
+int compr(void *a, void *b){
+	return compare(*(int*) a, *(int*) b);
+}
 
-sorting_fn sorting_fns[] = {bubble_sort, insertion_sort, NULL};
+void qsort_help(int *numbers, unsigned count){
+	qsort(numbers, count, sizeof(int), compr);
+}
+
+sorting_fn sorting_fns[] = {bubble_sort, insertion_sort, qsort_help, NULL};
 
